@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './App.css';
+import Title from '../components/Title';
 
 class App extends React.Component {
     constructor(props){
@@ -23,7 +24,7 @@ class App extends React.Component {
     render() {
         return (
             <div className={style.TodoApp}>
-                Title('Apka Webpack+React!');
+                <Title title = 'Apka Webpack+React!' counter = '(0)'/>
             </div>
         );
     }
