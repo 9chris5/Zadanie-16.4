@@ -1,12 +1,25 @@
 import React from 'react';
 import style from './App.css';
 import Title from '../components/Title';
+import TodoList from '../components/TodoList';
+import Todo from '../components/Todo';
+
+
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            data: []
+            data: [{
+                id: 1,
+                    text: 'clean room'
+                }, {
+                id: 2,
+                    text: 'wash the dishes'
+                }, {
+                id: 3,
+                    text: 'feed my cat'
+            }]
         };
     }
     addTodo(val){
@@ -16,6 +29,7 @@ class App extends React.Component {
         };
         const data = [...this.state.data, todo];
         this.setState({data});
+        console.log(data);
     }
     removeTodo(id) {
         const remainder = this.state.data.filter(todo => todo.id !== id);
@@ -23,8 +37,9 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div className={style.TodoApp}>
-                <Title title = 'Apka Webpack+React!' counter = '(0)'/>
+            <div className = {style.TodoApp}>
+                <Title title = 'Apka Webpack+React!' counter = '(0)' />
+                <TodoList list = {this.state.data.map(item => <Todo text = {item.text} id = {item.id}/>)} />
             </div>
         );
     }
